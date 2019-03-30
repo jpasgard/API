@@ -8,10 +8,10 @@
 		<version>2.1.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.handsy</groupId>
-	<artifactId>back</artifactId>
+	<groupId>br.com.hdsgroup</groupId>
+	<artifactId>handsy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>back</name>
+	<name>handsy</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -51,11 +51,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.7.0</version>
 		</dependency>
 	</dependencies>
 
