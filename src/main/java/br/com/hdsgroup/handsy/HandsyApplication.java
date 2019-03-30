@@ -1,13 +1,13 @@
-package com.handsy.back;
+package br.com.hdsgroup.handsy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackApplication {
+public class HandsyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackApplication.class, args);
+		SpringApplication.run(HandsyApplication.class, args);
 	}
 
 }
