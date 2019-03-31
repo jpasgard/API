@@ -31,4 +31,25 @@ public class UserEntity {
         this.email = email;
         this.senha = senha;
     }
+    
+    public Integer getId() {
+    	return this.id;
+    }
+    
+    public String getNome() {
+    	return this.nome;
+    }
+    
+    public String getEmail() {
+    	return this.email;
+    }
+    
+    public String getSenha() {
+    	return this.senha;
+    }
+    
+    public void setSenha(String senha) {
+    	this.senha = senha;
+    }
+    
 }
