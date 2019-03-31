@@ -1,26 +1,34 @@
 package br.com.hdsgroup.handsy.entities;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.Email;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-@Entity
+import javax.persistence.*;
+import java.util.List;
+
 @Data
-public class UserEntity implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	private Integer id;
-	
-	@Email
-	private String email;
-	private String nome;
-	@OneToMany
-	private List<NodeEntity> nodes;
+@Entity
+public class UserEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String nome;
+    @Column(unique = true)
+    private String email;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<NodeEntity> nodes;
+    @JsonIgnore
+    private String senha;
+
+    public UserEntity() {
+
+    }
+
+    public UserEntity(Integer id, String nome, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
 }
