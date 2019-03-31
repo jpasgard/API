@@ -18,11 +18,4 @@ public class CredenciaisDTO {
         this.senha = senha;
     }
     
-    public String getEmail() {
-    	return this.email;
-    }
-    
-    public String getSenha() {
-    	return this.senha;
-    }
 }
