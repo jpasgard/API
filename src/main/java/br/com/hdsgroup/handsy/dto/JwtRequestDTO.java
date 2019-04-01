@@ -6,4 +6,5 @@ import lombok.Data;
 public class JwtRequestDTO {
     private String email;
     private String senha;
+    
 }

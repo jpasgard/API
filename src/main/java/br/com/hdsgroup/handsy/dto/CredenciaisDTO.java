@@ -17,4 +17,5 @@ public class CredenciaisDTO {
         this.email = email;
         this.senha = senha;
     }
+    
 }
