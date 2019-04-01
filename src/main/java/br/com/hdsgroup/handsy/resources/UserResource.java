@@ -24,6 +24,18 @@ public class UserResource {
         UserEntity userEntity = userService.getById(id);
         return ResponseEntity.ok().body(userEntity);
     }
+    
+    @RequestMapping(value = "/nome", method = RequestMethod.GET)
+    public ResponseEntity<UserEntity> findNome(@RequestParam(value="value") String nome) {
+        UserEntity userEntity = userService.getByNome(nome);
+        return ResponseEntity.ok().body(userEntity);
+    }
+    
+    @RequestMapping(value = "/email", method = RequestMethod.GET)
+    public ResponseEntity<UserEntity> findEmail(@RequestParam(value="value") String email) {
+        UserEntity userEntity = userService.getByEmail(email);
+        return ResponseEntity.ok().body(userEntity);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UserResource> save(@PathVariable UserEntity userEntity) {

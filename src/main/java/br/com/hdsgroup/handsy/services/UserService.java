@@ -30,6 +30,14 @@ public class UserService {
     public UserEntity getById(Integer id) {
         return iUserRepository.findById(id).get();
     }
+    
+    public UserEntity getByNome(String nome) {
+        return iUserRepository.findByNome(nome);
+    }
+    
+    public UserEntity getByEmail(String email) {
+        return iUserRepository.findByEmail(email);
+    }
 
     public UserEntity save(UserEntity userEntity) {
         userEntity.setSenha(bCryptPasswordEncoder.encode(userEntity.getSenha()));
