@@ -27,12 +27,6 @@ public class UserResource {
         return ResponseEntity.ok().body(userEntity);
     }
     
-    @RequestMapping(value = "busca/{id}", method = RequestMethod.GET)
-    public ResponseEntity<List<NodeEntity>> findListaNodeId(@PathVariable Integer id) {
-        List<NodeEntity> nodeEntity = userService.getById(id).getNodes();
-        return ResponseEntity.ok().body(nodeEntity);
-    }
-    
     @RequestMapping(value = "/nome", method = RequestMethod.GET)
     public ResponseEntity<UserEntity> findNome(@RequestParam(value="value") String nome) {
         UserEntity userEntity = userService.getByNome(nome);
@@ -45,8 +39,8 @@ public class UserResource {
         return ResponseEntity.ok().body(userEntity);
     }
     
-    @RequestMapping(value = "/busca", method = RequestMethod.GET)
-    public ResponseEntity<List<NodeEntity>> findNomeListaNode(@RequestParam(value="value") String nome) {
+    @RequestMapping(value = "/nodes", method = RequestMethod.GET)
+    public ResponseEntity<List<NodeEntity>> findNomeListaNodes(@RequestParam(value="value") String nome) {
         List<NodeEntity> nodeEntity = userService.getByNome(nome).getNodes();
         return ResponseEntity.ok().body(nodeEntity);
     }

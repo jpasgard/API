@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @Service
@@ -23,6 +24,9 @@ public class DBService {
     	
         UserEntity userEntity01 = new UserEntity(null, "José", "jose@gmail.com", bCryptPasswordEncoder.encode("123"));
         UserEntity userEntity02 = new UserEntity(null, "Maria", "maria@gmail.com", bCryptPasswordEncoder.encode("123"));
+        
+        userEntity01.setNodes(new ArrayList<NodeEntity>());
+        userEntity02.setNodes(new ArrayList<NodeEntity>());
         
         NodeEntity nodeEntity01 = new NodeEntity(null, false);
         NodeEntity nodeEntity02 = new NodeEntity(null, false);

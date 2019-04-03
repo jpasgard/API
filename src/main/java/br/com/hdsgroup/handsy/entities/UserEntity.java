@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,7 +18,7 @@ public class UserEntity {
     @Column(unique = true)
     private String email;
     @OneToMany(fetch = FetchType.EAGER)
-    private List<NodeEntity> nodes = new ArrayList<NodeEntity>();
+    private List<NodeEntity> nodes;
     @JsonIgnore
     private String senha;
 
