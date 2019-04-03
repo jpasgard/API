@@ -16,4 +16,14 @@ public class NodeEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Boolean status;
+    
+    public NodeEntity() {
+
+    }
+    
+    public NodeEntity(Integer id, Boolean status) {
+        this.id = id;
+        this.status = status;
+    }
+    
 }
