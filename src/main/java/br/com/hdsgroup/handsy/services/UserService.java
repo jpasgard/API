@@ -5,7 +5,7 @@ import br.com.hdsgroup.handsy.config.security.UserSS;
 import br.com.hdsgroup.handsy.dto.JwtRequestDTO;
 import br.com.hdsgroup.handsy.dto.JwtResponseDTO;
 import br.com.hdsgroup.handsy.entities.UserEntity;
-import br.com.hdsgroup.handsy.repositories.IUserRepository;
+import br.com.hdsgroup.handsy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,25 +23,25 @@ public class UserService {
     @Autowired
     private JWTUtil jwtUtil;
     @Autowired
-    private IUserRepository iUserRepository;
+    private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public UserEntity getById(Integer id) {
-        return iUserRepository.findById(id).get();
+        return userRepository.findById(id).get();
     }
     
     public UserEntity getByNome(String nome) {
-        return iUserRepository.findByNome(nome);
+        return userRepository.findByNome(nome);
     }
     
     public UserEntity getByEmail(String email) {
-        return iUserRepository.findByEmail(email);
+        return userRepository.findByEmail(email);
     }
 
     public UserEntity save(UserEntity userEntity) {
         userEntity.setSenha(bCryptPasswordEncoder.encode(userEntity.getSenha()));
-        return iUserRepository.save(userEntity);
+        return userRepository.save(userEntity);
     }
 
     public ResponseEntity<JwtResponseDTO> login(JwtRequestDTO jwtRequestDTO) {

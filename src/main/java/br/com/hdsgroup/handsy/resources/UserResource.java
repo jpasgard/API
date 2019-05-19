@@ -2,7 +2,7 @@ package br.com.hdsgroup.handsy.resources;
 
 import br.com.hdsgroup.handsy.dto.JwtRequestDTO;
 import br.com.hdsgroup.handsy.dto.JwtResponseDTO;
-import br.com.hdsgroup.handsy.entities.NodeEntity;
+import br.com.hdsgroup.handsy.entities.DeviceEntity;
 import br.com.hdsgroup.handsy.entities.UserEntity;
 import br.com.hdsgroup.handsy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,14 +40,14 @@ public class UserResource {
     }
     
     @RequestMapping(value = "/nodes", method = RequestMethod.GET)
-    public ResponseEntity<List<NodeEntity>> findNomeListaNodes(@RequestParam(value="value") String nome) {
-        List<NodeEntity> nodeEntity = userService.getByNome(nome).getNodes();
-        return ResponseEntity.ok().body(nodeEntity);
+    public ResponseEntity<List<DeviceEntity>> findNomeListaNodes(@RequestParam(value="value") String nome) {
+        List<DeviceEntity> deviceEntity = userService.getByNome(nome).getDevices();
+        return ResponseEntity.ok().body(deviceEntity);
     }
      
     
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<UserResource> save(@PathVariable UserEntity userEntity) {
+    public ResponseEntity<UserResource> save(@RequestBody UserEntity userEntity) {
         userEntity = userService.save(userEntity);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userEntity.getId()).toUri();
         return ResponseEntity.created(uri).build();
@@ -56,5 +56,11 @@ public class UserResource {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<JwtResponseDTO> login(@Valid @RequestBody JwtRequestDTO jwtRequestDTO) throws Exception {
         return userService.login(jwtRequestDTO);
+    }
+
+    @RequestMapping(value = "/devices/{email}", method = RequestMethod.GET)
+    public ResponseEntity<List<DeviceEntity>> findDevicesByEmail(@PathVariable String email) {
+        UserEntity userEntity = userService.getByEmail(email);
+        return ResponseEntity.ok().body(userEntity.getDevices());
     }
 }

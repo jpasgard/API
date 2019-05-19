@@ -10,20 +10,22 @@ import java.io.Serializable;
 
 @Data
 @Entity
-public class NodeEntity implements Serializable {
+public class DeviceEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String deviceName;
     private Boolean status;
     
-    public NodeEntity() {
+    public DeviceEntity() {
 
     }
     
-    public NodeEntity(Integer id, Boolean status) {
+    public DeviceEntity(Integer id, Boolean status, String deviceName) {
         this.id = id;
         this.status = status;
+        this.deviceName = deviceName;
     }
     
 }
