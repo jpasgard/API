@@ -22,7 +22,7 @@ public class DBService {
 
     public void instanteTesteDatabase() {
     	
-        UserEntity userEntity01 = new UserEntity(null, "José", "jose@gmail.com", bCryptPasswordEncoder.encode("123"));
+        UserEntity userEntity01 = new UserEntity(null, "José", "admin@handsy.com.br", bCryptPasswordEncoder.encode("123"));
         UserEntity userEntity02 = new UserEntity(null, "Maria", "maria@gmail.com", bCryptPasswordEncoder.encode("123"));
         
         userEntity01.setDevices(new ArrayList<DeviceEntity>());
