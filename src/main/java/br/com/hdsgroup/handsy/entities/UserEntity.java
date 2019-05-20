@@ -18,7 +18,7 @@ public class UserEntity {
     @Column(unique = true)
     private String email;
     @OneToMany(fetch = FetchType.EAGER)
-    private List<NodeEntity> nodes;
+    private List<DeviceEntity> devices;
     @JsonIgnore
     private String senha;
 

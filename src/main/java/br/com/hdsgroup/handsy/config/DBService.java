@@ -1,9 +1,9 @@
 package br.com.hdsgroup.handsy.config;
 
-import br.com.hdsgroup.handsy.entities.NodeEntity;
+import br.com.hdsgroup.handsy.entities.DeviceEntity;
 import br.com.hdsgroup.handsy.entities.UserEntity;
-import br.com.hdsgroup.handsy.repositories.INodeRepository;
-import br.com.hdsgroup.handsy.repositories.IUserRepository;
+import br.com.hdsgroup.handsy.repositories.DeviceRepository;
+import br.com.hdsgroup.handsy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,30 +16,30 @@ public class DBService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
-    private IUserRepository iUserRepository;
+    private UserRepository userRepository;
     @Autowired
-    private INodeRepository iNodeRepository;
+    private DeviceRepository deviceRepository;
 
     public void instanteTesteDatabase() {
     	
-        UserEntity userEntity01 = new UserEntity(null, "José", "jose@gmail.com", bCryptPasswordEncoder.encode("123"));
+        UserEntity userEntity01 = new UserEntity(null, "José", "admin@handsy.com.br", bCryptPasswordEncoder.encode("123"));
         UserEntity userEntity02 = new UserEntity(null, "Maria", "maria@gmail.com", bCryptPasswordEncoder.encode("123"));
         
-        userEntity01.setNodes(new ArrayList<NodeEntity>());
-        userEntity02.setNodes(new ArrayList<NodeEntity>());
+        userEntity01.setDevices(new ArrayList<DeviceEntity>());
+        userEntity02.setDevices(new ArrayList<DeviceEntity>());
         
-        NodeEntity nodeEntity01 = new NodeEntity(null, false);
-        NodeEntity nodeEntity02 = new NodeEntity(null, false);
+        DeviceEntity deviceEntity01 = new DeviceEntity(null, false, "Quarto");
+        DeviceEntity deviceEntity02 = new DeviceEntity(null, false, "Cozinha");
         
-        NodeEntity nodeEntity03 = new NodeEntity(null, true);
-        NodeEntity nodeEntity04 = new NodeEntity(null, true);
+        DeviceEntity deviceEntity03 = new DeviceEntity(null, true, "Garagem");
+        DeviceEntity deviceEntity04 = new DeviceEntity(null, true, "Sala");
         
-        userEntity01.getNodes().addAll(Arrays.asList(nodeEntity01, nodeEntity02));
+        userEntity01.getDevices().addAll(Arrays.asList(deviceEntity01, deviceEntity02));
         
-        userEntity02.getNodes().addAll(Arrays.asList(nodeEntity03, nodeEntity04));
+        userEntity02.getDevices().addAll(Arrays.asList(deviceEntity03, deviceEntity04));
         
-        iNodeRepository.saveAll(Arrays.asList(nodeEntity01, nodeEntity02, nodeEntity03, nodeEntity04));
+        deviceRepository.saveAll(Arrays.asList(deviceEntity01, deviceEntity02, deviceEntity03, deviceEntity04));
         
-        iUserRepository.saveAll(Arrays.asList(userEntity01, userEntity02));
+        userRepository.saveAll(Arrays.asList(userEntity01, userEntity02));
     }
 }
